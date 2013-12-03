@@ -1,7 +1,5 @@
 package com.korwe.javastg.type;
 
-import com.sun.xml.internal.ws.util.StringUtils;
-
 /**
  * @author <a href="mailto:tjad.clark@korwe.com>Tjad Clark</a>
  */
@@ -35,7 +33,7 @@ public abstract class IDDeclaration extends Annotatable{
     }
 
     public String getCapitalizedName() {
-        return StringUtils.capitalize(name);
+        return name.substring(0,1).toUpperCase()+name.substring(1);
     }
 
     @Override
