@@ -66,24 +66,24 @@ public class TestParameterizedClass {
     @Test
     public void canAssign_parameterTypesWithUnmatchingTypeParameters(){
         TypeParameter typeParameter = TestUtil.getBasicTypeParameterWithParent();
-        baseClass.addTypeParameter(typeParameter);
+        extendedExtendedClass.addTypeParameter(typeParameter);
 
         parameterizedClass.addParameterType(new Reference("garbage.place", "UnmatchingParameterType"));
 
-        assertFalse("parameter types should not be compatible with ancestor class' type paramters", baseClass.canAssign(TestUtil.typeValueFor(parameterizedClass)));
+        assertFalse("parameter types should not be compatible with ancestor class' type paramters", extendedExtendedClass.canAssign(TestUtil.typeValueFor(parameterizedClass)));
 
     }
 
     @Test
     public void canAssign_parameterTypesWithMatchingTypeParameters(){
         TypeParameter typeParameter = TestUtil.getBasicTypeParameterWithParent();
-        baseClass.addTypeParameter(typeParameter);
+        extendedExtendedClass.addTypeParameter(typeParameter);
 
         for(Reference referenceType : typeParameter.getParentTypes()){
             parameterizedClass.addParameterType(referenceType);
         }
 
-        assertTrue("parameter types should be compatible with ancestor class' type paramters", baseClass.canAssign(TestUtil.typeValueFor(parameterizedClass)));
+        assertTrue("parameter types should be compatible with ancestor class' type paramters", extendedExtendedClass.canAssign(TestUtil.typeValueFor(parameterizedClass)));
 
     }
 
@@ -91,7 +91,7 @@ public class TestParameterizedClass {
     public void canAssign_parameterTypesWithExtendedTypeParameters(){
         TypeParameter typeParameter = TestUtil.getBasicTypeParameterWithParent();
 
-        baseClass.addTypeParameter(typeParameter);
+        extendedExtendedClass.addTypeParameter(typeParameter);
 
         for(Reference referenceType : typeParameter.getParentTypes()){
             if(ClassType.class.isAssignableFrom(referenceType.getClass())){
@@ -105,7 +105,7 @@ public class TestParameterizedClass {
             }
         }
 
-        assertTrue("parameter types should be compatible with ancestor class' type paramters", baseClass.canAssign(TestUtil.typeValueFor(parameterizedClass)));
+        assertTrue("parameter types should be compatible with ancestor class' type paramters", extendedExtendedClass.canAssign(TestUtil.typeValueFor(parameterizedClass)));
 
     }
 }

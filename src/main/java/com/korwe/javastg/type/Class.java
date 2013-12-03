@@ -38,7 +38,7 @@ public abstract class Class extends MemberContainer implements ClassType{
         if(this.equals(classType))return true;
 
         if(this.getSuperClass() != null){
-            return classType.extendsFrom(this.getSuperClass());
+            return this.getSuperClass().extendsFrom(classType);
         }
 
         return false;

@@ -41,9 +41,14 @@ public abstract class ParameterizedClass extends ParameterizedType implements Cl
             }
             return true;
         }
+        else if(!this.getParameterTypes().isEmpty()){
+            return false;
+        }
+
+        //behave as normal class
 
         if(this.getSuperClass() != null){
-            return classType.extendsFrom(this.getSuperClass());
+            return this.getSuperClass().extendsFrom(classType);
         }
         return false;
     }
